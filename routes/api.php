@@ -175,7 +175,7 @@ $video->dash()
 });
 
 Route::post('/stream-to-youtube', function(Request $request){
-  Log::info($request->url);
+  Log::info($request->file);
   $response = Http::attach(
     'file', $request->file
     )->put($request->url);
