@@ -11,6 +11,7 @@ use Streaming\Representation;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -174,7 +175,7 @@ $video->dash()
 });
 
 Route::post('/stream-to-youtube', function(Request $request){
-  dd($request->all());
+  Log::info($request->all());
   $response = Http::attach(
     'file', $request->file
     )->put($request->url);
