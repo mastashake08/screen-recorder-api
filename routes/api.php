@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Streaming\Representation;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use Illuminate\Support\Facades\Http;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -170,4 +171,11 @@ $video->dash()
     ->autoGenerateRepresentations() // Auto generate representations
     ->save(null, $to_s3); // It can be passed a path to the method or it can be null
     return response()->json($video->metadata());
+});
+
+Route::post('/stream-to-youtube', function(Request $request){
+  $response = Http::put($request->url, [
+    'file' => $request->file
+  ]);
+  return $response;
 });
