@@ -178,6 +178,6 @@ Route::post('/stream-to-youtube', function(Request $request){
   $response = Http::attach(
     'file', $request->file
     )->put($request->url);
-    Log::info($response);
+    Log::info($request->file);
   return $response;
 });
