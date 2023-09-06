@@ -131,7 +131,6 @@ Route::post('/stream-to-youtube', function(Request $request){
     )->put($request->url);
     Log::info($response->getBody());
     Log::info($request->url);
-    Log::info($request->file->openFile());
     Log::info(file_get_contents($request->file));
   return $response;
 });
