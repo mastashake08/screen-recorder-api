@@ -127,7 +127,7 @@ Route::post('/get-dash', function (Request $request) {
 
 Route::post('/stream-to-youtube', function(Request $request){
   $response = Http::attach(
-    'file', file_get_contents($request->file)
+    'file', $request->file->openFile()
     )->put($request->url);
     Log::info($response->getBody());
     Log::info($request->url);
